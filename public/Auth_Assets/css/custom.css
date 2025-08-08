@@ -1,0 +1,14 @@
+/* Make all input borders black */
+input.form-control,
+input.form-control-user,
+select.form-control {
+    border: 1px solid black !important;
+    box-shadow: none !important;
+}
+
+input.form-control:focus,
+input.form-control-user:focus,
+select.form-control:focus {
+    border-color: black !important;
+    box-shadow: none !important;
+}
