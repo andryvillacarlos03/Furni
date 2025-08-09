@@ -3,25 +3,38 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\CheckUserRole;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 use Inertia\Inertia;
 
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return Inertia::render('Landing/Index', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('page.welcome');
 
-// Landing Page Controller
-Route::get('/home',fn()=>inertia('Landing/Index'))->name('page.home');
+
 Route::get('/about',fn()=>inertia('Landing/About'))->name('page.about');
 Route::get('/services',fn()=>inertia('Landing/Service'))->name('page.service');
 Route::get('/blog',fn()=>inertia('Landing/Blog'))->name('page.blog');
 Route::get('/contact',fn()=>inertia('Landing/Contact'))->name('page.contact');
+
+
+Route::get('/', function(){
+  if(Auth::check()){
+    $user = Auth::user();
+    if($user->role === 'admin') return redirect()->route('admin.dashboard');
+    else if($user->role === 'customer') return redirect()->route('customer.dashboard');
+   }
+
+   return redirect()->route('page.welcome'); 
+});
+
 
 Route::middleware(['auth','verified',CheckUserRole::class . ':admin'])->group(function(){
   Route::get('/admin/dashboard', fn()=>inertia('Admin/Dashboard'))->name('admin.dashboard');

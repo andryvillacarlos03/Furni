@@ -10,4 +10,7 @@ export default defineConfig({
         }),
         react(),
     ],
+    css: {
+        devSourcemap: false, // Prevents Vite from looking for missing .css.map files
+    },
 });

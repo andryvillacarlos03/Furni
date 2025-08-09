@@ -5,9 +5,7 @@ export default function MainLayout({ children }) {
   return (
     <div>
       <MyNavbar />
-      <main>
-        {typeof children === "function" ? children() : children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

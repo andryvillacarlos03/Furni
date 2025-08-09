@@ -21,7 +21,7 @@ export default function Login({ status, canResetPassword }) {
                 {/* Back link */}
                 <div className="mb-4">
                     <Link
-                        href="/"
+                        href={route('page.welcome')}
                         className="text-sm text-gray-600 hover:text-black hover:underline"
                     >
                         ← Back
