@@ -129,7 +129,7 @@ export default function Register() {
         <div className="w-full max-w-xl rounded-xl bg-white p-8 shadow-lg">
           <Link
             href={route('login')}
-            className="mb-4 inline-block text-sm text-gray-600 hover:text-black hover:underline"
+            className="mb-4 inline-block text-sm text-gray-600 hover:text-black hover:underline no-underline"
           >
             ← Back
           </Link>

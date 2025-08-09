@@ -1,5 +1,7 @@
 import { useForm, Link } from '@inertiajs/react';
 
+
+      
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
@@ -22,7 +24,7 @@ export default function Login({ status, canResetPassword }) {
                 <div className="mb-4">
                     <Link
                         href={route('page.welcome')}
-                        className="text-sm text-gray-600 hover:text-black hover:underline"
+                        className="text-sm text-gray-600 hover:text-black no-underline hover:underline"
                     >
                         ← Back
                     </Link>
